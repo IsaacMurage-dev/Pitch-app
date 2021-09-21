@@ -95,15 +95,16 @@ class UpVote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pitching_id = db.Column(db.Integer)
     id_user=db.Column(db.Integer,db.ForeignKey('users.id'))
+    pitch_id=db.Column(db.Integer,db.ForeignKey('pitches.id'))
 
     def save_vote(self):
         db.session.add(self)
         db.session.commit()
 
-    # @classmethod
-    # def get_votes(cls, id):
-    #     UpVote = UpVote.query.filter_by(pitching_id=id).all()
-    #     return UpVote
+    @classmethod
+    def get_upvotes(cls, id):
+        upward = UpVote.query.filter_by(pitching_id=id).all()
+        return upward
 
     def __repr__(self):
         return f'{self.id_user}:{self.pitching_id}'
