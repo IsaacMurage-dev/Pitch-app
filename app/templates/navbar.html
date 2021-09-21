@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: whitesmoke;">
+    {% if current_user.is_authenticated%}
+    <a class="navbar-brand " href="/">Pitch</a> {% else %}
+    <a class="navbar-brand" href="/">Pitch</a> {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="cat font-weight-bold">Genre</span>
+          </a>
+          <div class="dropdown-menu category" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/category/Interview-Pitch">Inspirational Stories</a>
+            <a class="dropdown-item" href="/category/Product-Pitch">Technology</a>
+            <a class="dropdown-item" href="/category/Promotion-Pitch">Entrepreneurship</a>
+            <a class="dropdown-item" href="/category/Business">Cars Enthusiasim</a>
+            <a class="dropdown-item" href="/category/Academic">Pun,Talent,Sports and Entertainment</a>
+            <!-- <a class="dropdown-item" href="/category/Political">Political</a>
+            <a class="dropdown-item" href="/category/Technology">Technology</a>
+            <a class="dropdown-item" href="/category/Health">Health</a> -->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"
+              href="{{url_for('main.profile', uname = current_user.username, id_user = current_user.id)}}">{{current_user.username|capitalize}}</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        {% if current_user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link"
+            href="{{url_for('main.profile', uname = current_user.username, id_user = current_user.id)}}">{{current_user.username|capitalize}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.logout')}}">
+            <i class="fa fa-sign-out"></i><span class="log">Sign out</span> </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">
+            <i class="fa fa-sign-in"></i> <span class="log">Sign in</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">
+            <i class="fa fa-user-plus"></i> <span class="log">Sign Up</span></a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  
+  <style>
+    .navbar-brand {
+      font-size: 35px;
+      font-weight: 600;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: rgb(0, 0, 0);;
+    }
+
+    .cat{
+      font-size: 25px;
+      font-weight: 500;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color:darkblue;
+    }
+    .dropdown-item{
+      font-size: 15px;
+      color:blue;
+    }
+    .log{
+      font-size: 20px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: brown;
+    }
+    
+  </style>

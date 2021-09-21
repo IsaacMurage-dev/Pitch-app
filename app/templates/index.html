@@ -1,0 +1,48 @@
+{% extends 'base.html'%} {% block content %}
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 welcome">
+        <div class="intro">
+          <h1 class="text-center font-weight-bold"> Your 60 Seconds Avenue of Expression </h1>
+          <h3 class="text-center font-weight-bold">"Pitch your story in a minute or less in a way that captivates"
+          </h3>
+          <br>
+          <h3 class="text-center font-weight-bold">"It could be a daunting task but the idea is to Embrace Clarity to Manifest Reality"
+          </h3>
+        
+
+          {% if current_user.is_authenticated%}
+          <a class="btn btn-info text-center font-weight-bold view mt-5" href="{{url_for('main.home')}}"><span>Display
+              Pitches</span></a> {% else %}
+          <a id="start" class="btn btn-info text-center font-weight-bold mt-5 view" href="{{url_for('auth.login')}}">Sign
+              In</a> {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .container {
+    height: 500px;
+    background-image: url(https://media.istockphoto.com/photos/dramatic-death-and-time-concept-picture-id505046687?k=20&m=505046687&s=612x612&w=0&h=Xi4SpQQECxDvU-aTjhd-aWasB4cRrRTDtmPJIt3YI0k=);
+    background-size: 100% 100%;
+  }
+
+  .intro {
+    padding-top: 14%;
+    width: 25%;
+    font-family: serif;
+    font-weight: 600;
+  }
+  .view{
+    margin-left: 40%;
+  }
+  #start{
+    font-size: large;
+  }
+  .btn{
+    font-size: larger;
+  }
+</style>
+{% endblock %}
