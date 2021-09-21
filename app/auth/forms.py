@@ -19,7 +19,7 @@ class RegistrationForm(FlaskForm):
 
     def validate_username(self, data_field):
         if User.query.filter_by(username=data_field.data).first():
-            raise ValidationError("A similar username exists")
+            raise ValidationError("A similar username aready exists")
 
 
 class LoginForm(FlaskForm):
