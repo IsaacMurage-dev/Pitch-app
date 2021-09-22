@@ -40,7 +40,7 @@ This is an application that enables users to express themselves through a 60 sec
 
 
 ## Deployment
-This is the live link to the project: <a href=""> Pitch-app</a>
+This is the live link to the project: <a href="https://aizopitchapp.herokuapp.com/"> Pitch-app</a>
 
 
 
